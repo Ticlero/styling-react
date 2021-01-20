@@ -1,15 +1,15 @@
 import React from "react";
-import "./SassComponent.scss";
+import "./SassComponent";
 function SassComponent() {
   return (
     <div className="SassComponent">
-      <div className="box red"></div>
-      <div className="box ornage"></div>
-      <div className="box yellow"></div>
-      <div className="box green"></div>
-      <div className="box blue"></div>
-      <div className="box indigo"></div>
-      <div className="box violet"></div>
+      <div className="box red">a</div>
+      <div className="box ornage">b</div>
+      <div className="box yellow">c</div>
+      <div className="box green">d</div>
+      <div className="box blue">e</div>
+      <div className="box indigo">f</div>
+      <div className="box violet">g</div>
     </div>
   );
 }

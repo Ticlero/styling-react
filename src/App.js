@@ -3,7 +3,7 @@ import SassComponent from "./SassComponent/SassComponent";
 function App() {
   return (
     <div className="App">
-      <SassComponent></SassComponent>
+      <SassComponent />
     </div>
   );
 }

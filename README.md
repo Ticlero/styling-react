@@ -11,7 +11,7 @@ yarn eject
 yarn install
 
 Tip
-\*.Sass 파일에서 라이브러리를 불러올 때 @import '\~library/styles' 앞에 '\~'을 붙여주면 'node_modules' 폴더를 탐색
+.Sass 파일에서 라이브러리를 불러올 때 @import '\\~library/styles' 앞에 '\\~'을 붙여주면 'node_modules' 폴더를 탐색
 
 ## 유용한 Sass 라이브러리 2가지
 

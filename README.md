@@ -133,3 +133,93 @@ classNames("one", ["two", three]); => 'one two'
 const myClass = "hello";
 classNames("one", myClass, {myCondition: true}); => 'one hello myCondition';
 ```
+
+### **CSS-in-JS** 컴포넌트 스타일링의 또 다른 패러다임은 Javascript 파일 안에 Style을 선언하는 방식
+
+개발자들이 가장 많이 선호한다는 **styled-components** 사용
+대체 라이브러리는 **emotion**이 존재
+
+이 라이브러리를 사용하면 Javascript 파일 하나에 스타일까지 작성할 수 있기 때문에, .css, .scss 확장자를 가진 스타일 파일을 따로 만들지 않아도 되는 이점이 존재
+
+[라이브러리 종류 확인](https://github.com/MicheleBertoli/css-in-js)
+
+\([react-icons](https://react-icons.netlify.com/) 라이브러리가 존재하는데 리액트에서 다양하고 예쁜 아이콘을 사용 할 수 있도록 도와주는 라이브러리\)
+
+```
+yarn add styled-components
+```
+
+사용법
+
+```
+StyledComponent.jsx
+
+const Box = styled.div`
+  background: ${(props) => props.color || "blue"};
+  padding: 1rem;
+  display: flex;
+`;
+
+const Button = styled.button`
+  background: white;
+  color: blue;
+  border-radius: 4px;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-weight: 600;
+  &:hover {
+    background: rgba(255, 255, 255, 0.9);
+  }
+  ${(props) =>
+    props.inverted &&
+    css`
+      background: none;
+      border: 2px solid white;
+      color: white;
+      &:hover {
+        background: white;
+        color: black;
+      }
+    `};
+  & + button {
+    margin-left: 1rem;
+  }
+
+  function StyledComponent() {
+  return (
+    <Box color="black">
+      <Button>안녕하세요</Button>
+      <Button inverted={true}>테두리만</Button>
+    </Box>
+  );
+}
+`;
+```
+
+`을 사용하여 만든 문자열에 스타일 정보를 넣어주는 문법을 **Tagged 템플릿 리터럴**이라고 한다.
+CSS-in-JS를 사용하면 템플릿 안에 Javascript 객체나 함수를 절달할 때 온전히 추출할 수 있다.
+
+```
+일반적인 템플릿
+`hello ${{foo: 'bar'}} ${()=> 'world'}!`
+//결과: "hello [object object] () => 'world'!"
+
+
+Tagged 템플릿
+function tagged(...arg)
+{
+  console.log(args);
+}
+tagged`hello ${{foo: 'bar'}} ${()=> 'world'}!`
+
+//결과
+(3) [Array(3), {…}, ƒ]
+0: (3) ["hello ", " ", "!", raw: Array(3)]
+1: {foo: "bar"}
+2: ()=> 'world'
+
+```
